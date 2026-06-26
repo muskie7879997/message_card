@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>メッセージ閲覧</title>
+
+<style>
+body{
+    font-family:sans-serif;
+    text-align:center;
+    margin-top:100px;
+}
+
+input{
+    padding:10px;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:18px;
+}
+
+#result{
+    margin-top:30px;
+    font-size:28px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>IDを入力してください</h1>
+
+<input id="idInput">
+
+<button onclick="checkID()">
+表示
+</button>
+
+<div id="result"></div>
+
+<script>
+
+const messages = {
+    "R2010":"おはよう"
+};
+
+function checkID(){
+
+    const id =
+    document.getElementById("idInput").value;
+
+    if(messages[id]){
+        document.getElementById("result").innerText =
+        messages[id];
+    }
+    else{
+        document.getElementById("result").innerText =
+        "IDが見つかりません";
+    }
+}
+
+</script>
+
+</body>
+</html>
