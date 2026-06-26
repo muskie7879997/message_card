@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>メッセージ閲覧</title>
+<title>免罪符</title>
 
 <style>
 body{
@@ -35,7 +35,7 @@ button{
 <input id="idInput">
 
 <button onclick="checkID()">
-表示
+enter
 </button>
 
 <div id="result"></div>
@@ -48,8 +48,11 @@ const messages = {
 
 function checkID(){
 
-    const id =
-    document.getElementById("idInput").value;
+    const id = document
+        .getElementById("idInput")
+        .value
+        .trim()
+        .toUpperCase();
 
     if(messages[id]){
         document.getElementById("result").innerText =
