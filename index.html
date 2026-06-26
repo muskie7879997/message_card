@@ -32,10 +32,10 @@ button{
 
 <h1>IDを入力してください</h1>
 
-<input id="idInput">
+<input id="idInput" onkeydown="if(event.key==='Enter') checkID()">
 
 <button onclick="checkID()">
-enter
+Enter
 </button>
 
 <div id="result"></div>
