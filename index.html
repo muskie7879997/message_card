@@ -38,7 +38,12 @@ button{
 Enter
 </button>
 
-<div id="result"></div>
+<div id="result" style="
+    white-space: pre-wrap;
+    text-align: left;
+    max-width: 800px;
+    margin: 30px auto;
+"></div>
 
 <script>
 
@@ -46,22 +51,38 @@ const messages = {
     "R2010":"おはよう"
 };
 
-function checkID(){
+async function checkID() {
 
-    const id = document
-        .getElementById("idInput")
-        .value
-        .trim()
-        .toUpperCase();
+```
+const id = document
+    .getElementById("idInput")
+    .value
+    .trim()
+    .toUpperCase();
 
-    if(messages[id]){
-        document.getElementById("result").innerText =
-        messages[id];
+try {
+
+    const response = await fetch(
+        "messages/" + id + ".txt"
+    );
+
+    if (!response.ok) {
+        throw new Error();
     }
-    else{
-        document.getElementById("result").innerText =
+
+    const text = await response.text();
+
+    document.getElementById("result").innerText =
+        text;
+
+} catch {
+
+    document.getElementById("result").innerText =
         "IDが見つかりません";
-    }
+
+}
+```
+
 }
 
 </script>
