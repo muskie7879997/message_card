@@ -57,9 +57,12 @@ const id = document
 
 try {
 
-    const response = await fetch(
-        "messages/" + id + ".txt"
-    );
+const text = await response.text();
+
+await typeWriter(
+    text,
+    document.getElementById("result")
+);
 
     if (!response.ok) {
         throw new Error();
@@ -77,6 +80,19 @@ try {
 
 }
 
+async function typeWriter(text, element) {
+
+    for (let i = 0; i <= text.length; i++) {
+
+        element.innerText =
+            text.slice(0, i) + "│";
+
+        await new Promise(resolve =>
+            setTimeout(resolve, 20)
+        );
+    }
+
+    element.innerText = text;
 }
 
 </script>
