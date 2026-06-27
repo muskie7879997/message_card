@@ -48,19 +48,19 @@ button{
 <script>
 async function typeWriter(text, element) {
 
-    for (let i = 0; i <= text.length; i++) {
+    element.innerText = "";
 
-        element.innerText =
-            text.slice(0, i) + "│";
+    for (let i = 0; i < text.length; i++) {
+
+        element.innerText += text[i];
 
         await new Promise(resolve =>
             setTimeout(resolve, 20)
         );
+
     }
 
-    element.innerText = text;
 }
-
 
 async function checkID() {
 
@@ -93,7 +93,6 @@ async function checkID() {
             "IDが見つかりません";
 
     }
-
 }
 </script>
 
