@@ -43,25 +43,25 @@ button{
     text-align: left;
     max-width: 800px;
     margin: 30px auto;
+    font-size: 24px;
+    line-height: 1.8;
 "></div>
 
 <script>
 async function typeWriter(text, element) {
 
-    element.innerText = "";
+    for (let i = 0; i <= text.length; i++) {
 
-    for (let i = 0; i < text.length; i++) {
-
-        element.innerText += text[i];
+        element.innerText =
+            text.slice(0, i) + "│";
 
         await new Promise(resolve =>
             setTimeout(resolve, 20)
         );
-
     }
 
+    element.innerText = text;
 }
-
 async function checkID() {
 
     const id = document
@@ -94,6 +94,7 @@ async function checkID() {
 
     }
 }
+
 </script>
 
 </body>
