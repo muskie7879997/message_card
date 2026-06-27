@@ -46,40 +46,6 @@ button{
 "></div>
 
 <script>
-
-async function checkID() {
-    
-const id = document
-    .getElementById("idInput")
-    .value
-    .trim()
-    .toUpperCase();
-
-try {
-
-const text = await response.text();
-
-await typeWriter(
-    text,
-    document.getElementById("result")
-);
-
-    if (!response.ok) {
-        throw new Error();
-    }
-
-    const text = await response.text();
-
-    document.getElementById("result").innerText =
-        text;
-
-} catch {
-
-    document.getElementById("result").innerText =
-        "IDが見つかりません";
-
-}
-
 async function typeWriter(text, element) {
 
     for (let i = 0; i <= text.length; i++) {
@@ -95,6 +61,41 @@ async function typeWriter(text, element) {
     element.innerText = text;
 }
 
+
+async function checkID() {
+
+    const id = document
+        .getElementById("idInput")
+        .value
+        .trim()
+        .toUpperCase();
+
+    try {
+
+        const response = await fetch(
+            "messages/" + id + ".txt"
+        );
+
+        if (!response.ok) {
+            throw new Error();
+        }
+
+        const text = await response.text();
+
+        await typeWriter(
+            text,
+            document.getElementById("result")
+        );
+
+    } catch {
+
+        document.getElementById("result").innerText =
+            "IDが見つかりません";
+
+    }
+
+}
+    
 </script>
 
 </body>
