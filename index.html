@@ -46,20 +46,6 @@ button{
 "></div>
 
 <script>
-async function typeWriter(text, element) {
-
-    for (let i = 0; i <= text.length; i++) {
-
-        element.innerText =
-            text.slice(0, i) + "│";
-
-        await new Promise(resolve =>
-            setTimeout(resolve, 20)
-        );
-    }
-
-    element.innerText = text;
-}
 async function checkID() {
 
     const id = document
@@ -80,10 +66,8 @@ async function checkID() {
 
         const text = await response.text();
 
-        await typeWriter(
-            text,
-            document.getElementById("result")
-        );
+        document.getElementById("result").innerText =
+            text;
 
     } catch {
 
@@ -92,7 +76,6 @@ async function checkID() {
 
     }
 }
-
 </script>
 
 </body>
